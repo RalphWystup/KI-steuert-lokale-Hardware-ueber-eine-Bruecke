@@ -1,0 +1,7 @@
+{
+  "_hinweis_1": "Diese Datei umbenennen in bruecke_zugang.json und beide Werte eintragen.",
+  "_hinweis_2": "workspace = Adresse, unter der der Empfaenger erreichbar ist, mit https:// und ohne Schraegstrich am Ende.",
+  "_hinweis_3": "token = Inhalt der Datei .empfaenger_token, die der Empfaenger beim ersten Start neben sich anlegt.",
+  "workspace": "https://<Adresse-des-Empfaengers>",
+  "token": "xxxxxxxxxxxxxxxx"
+}
