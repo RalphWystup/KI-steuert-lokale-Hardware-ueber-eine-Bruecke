@@ -6,7 +6,7 @@ Prof. Dr.-Ing. Ralph Wystup M.Sc. — erstellt mit KI und Agent (Claude Code, An
 
 Eine KI mit Agent läuft in einem Behälter auf einem Server. Sie kann rechnen und Programme schreiben — aber sie sieht keinen Bildschirm, keinen seriellen Anschluss, keine Messgeräte. Die Arbeit findet am Arbeitsplatz statt. Dieses Blatt zeigt, wie man beides verbindet, **ohne einen einzigen offenen Port**.
 
-**Seite öffnen:** https://ralphwystup.github.io/KI-steuert-lokale-Hardware-ueber-eine-Bruecke/ — Fassung 1.0 · 01.10.2026
+**Seite öffnen:** https://ralphwystup.github.io/KI-steuert-lokale-Hardware-ueber-eine-Bruecke/ — Fassung 1.1 · 07.10.2026
 
 Die Seite ist **eine einzige HTML-Datei** mit einer laufenden Agentenschleife zum Zusehen. Sie braucht keinen Server, keine Installation und keine Bibliothek.
 
@@ -26,12 +26,16 @@ Drei Ebenen:
 
 | Datei | Inhalt |
 |:--|:--|
-| [`Bruecke_KI_und_Arbeitsplatz_1.0.html`](Bruecke_KI_und_Arbeitsplatz_1.0.html) | die Seite: Aufbau, Schaubilder, Code, Vorschriften, eine laufende Agentenschleife |
+| [`Bruecke_KI_und_Arbeitsplatz_1.1.html`](Bruecke_KI_und_Arbeitsplatz_1.1.html) | die Seite: Aufbau, Schaubilder, Code, Vorschriften, eine laufende Agentenschleife |
 | [`bruecke.py`](bruecke.py) | die Brücke für den Arbeitsplatz, alle Projekte in einem Programm |
 | [`befehl.py`](befehl.py) | einen Auftrag absetzen und auf die Antwort warten |
 | [`empfaenger.py`](empfaenger.py) | die Warteschlange auf dem Server |
 | [`bausatz/agent.py`](bausatz/agent.py) | ein vollständiger Agent in etwa siebzig Zeilen |
-| [`bausatz/werkzeuge/`](bausatz/werkzeuge) | sechs Werkzeuge, jedes ein eigenes Programm |
+| [`bausatz/werkzeuge/`](bausatz/werkzeuge) | acht Werkzeuge, jedes ein eigenes Programm — darunter `esp32` (ein MicroPython-Brett bedienen) und `kurve_bewerten` (welche Kurvenform haben diese Messwerte?) |
+| [`kette/agent_lokal.py`](kette/agent_lokal.py) | Agentenschleife mit dem Sprachmodell auf dem Arbeitsplatzrechner: das Modell entscheidet, dieses Programm führt nur aus |
+| [`kette/auftraege.json`](kette/auftraege.json) | feste Aufträge mit erwarteter Messgröße und Schranke |
+| [`kette/pruefe_kette.py`](kette/pruefe_kette.py) | Prüfmittel der Strecke: Programm bis auf das Brett, jeder Schritt gemessen |
+| [`PRUEFPLAN.md`](PRUEFPLAN.md) | die Kriterien, mit Schranke und Prüfmittel je Punkt |
 | [`BRUECKE.md`](BRUECKE.md) | Kurzanleitung zur Brücke |
 
 ## Werkzeuge als fertige Programme

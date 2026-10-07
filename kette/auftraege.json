@@ -1,0 +1,102 @@
+[
+ {
+  "kennung": "blink-1hz",
+  "titel": "LED blinken lassen, 1 Hz",
+  "text": "Schreibe ein MicroPython-Programm fuer einen ESP32, das die LED an GPIO 2 einmal je Sekunde blinken laesst. Baue eine Messroutine ein, die nachweist, dass es wirklich laeuft: Gib nach jeder Periode eine Zeile 'LAUF blink-1hz 1.0 Hz n=<Nummer> t=<Millisekunden seit Start>' aus, die Zeit vom Zaehler des Geraetes (time.ticks_ms). Behaupte nichts, sondern miss. Gib nur den Programmtext zurueck, ohne Erklaerung.",
+  "datei": "blink.py",
+  "lebenszeile": "LAUF blink-1hz 1.0 Hz",
+  "erwartung": {
+   "pins": [
+    2
+   ],
+   "takt_hz": 1.0
+  },
+  "schranke_takt": 0.1,
+  "geraet": true,
+  "zweck": "der einfachste Fall; wenn der nicht echt durchlaeuft, laeuft keiner"
+ },
+ {
+  "kennung": "blink-2hz",
+  "titel": "Auf 2 Hz aendern",
+  "text": "Aendere das zuletzt geschriebene Programm so, dass die LED an GPIO 2 zweimal je Sekunde blinkt. Die Lebenszeile lautet dann 'LAUF blink-2hz 2.0 Hz n=<Nummer> t=<Millisekunden seit Start>'. Gib nur den Programmtext zurueck.",
+  "datei": "blink2.py",
+  "lebenszeile": "LAUF blink-2hz 2.0 Hz",
+  "erwartung": {
+   "pins": [
+    2
+   ],
+   "takt_hz": 2.0
+  },
+  "schranke_takt": 0.1,
+  "geraet": true,
+  "zweck": "Folgeanweisung: die Erwartung wandert mit, der Agent darf nicht die alte Datei melden"
+ },
+ {
+  "kennung": "blink-1s",
+  "titel": "1 s an, 1 s aus",
+  "text": "Schreibe ein MicroPython-Programm fuer einen ESP32, bei dem die LED an GPIO 2 genau eine Sekunde an und eine Sekunde aus ist. Gib nach jeder Periode die Zeile 'LAUF blink-1s 0.5 Hz n=<Nummer> t=<Millisekunden seit Start>' aus, die Zeit vom Zaehler des Geraetes. Gib nur den Programmtext zurueck.",
+  "datei": "blink1s.py",
+  "lebenszeile": "LAUF blink-1s 0.5 Hz",
+  "erwartung": {
+   "pins": [
+    2
+   ],
+   "takt_hz": 0.5
+  },
+  "schranke_takt": 0.05,
+  "geraet": true,
+  "zweck": "langsam genug, dass ein Mensch danebensteht und mitzaehlt"
+ },
+ {
+  "kennung": "atmen-sinus",
+  "titel": "Sinusfoermig atmen, 1 Hz",
+  "text": "Schreibe ein MicroPython-Programm fuer einen ESP32, das die LED an GPIO 2 per PWM sinusfoermig heller und dunkler werden laesst, eine volle Periode je Sekunde. Der Tastgrad folgt dabei einem Sinus, nicht einer Rampe und nicht einem Rechteck.\n\nBaue eine Messroutine ein, mit der sich von aussen nachpruefen laesst, dass die Kurve wirklich sinusfoermig ist. Dabei gilt: Das Programm soll nichts ueber sich behaupten, sondern Messwerte liefern. Lies deshalb jeden gesetzten Tastgrad aus der PWM-Einheit ZURUECK (pwm.duty() ohne Argument liefert den Registerwert) statt den gerechneten Wert zu melden, und gib je Periode zwei Zeilen aus:\n  LAUF atmen-sinus 1.0 Hz n=<Nummer> t=<Millisekunden seit Start>\n  P t=<Startzeit der Periode> dt=<gemessene Dauer in ms> D=<alle zurueckgelesenen Tastgrade, mit Komma getrennt>\nDie Zeiten kommen vom Zaehler des Geraetes (time.ticks_ms, time.ticks_diff). Gib nur den Programmtext zurueck.",
+  "datei": "atmen.py",
+  "lebenszeile": "LAUF atmen-sinus 1.0 Hz",
+  "erwartung": {
+   "pins": [
+    2
+   ],
+   "takt_hz": 1.0,
+   "form": "sinus",
+   "pwm": true,
+   "selbstmessung": true
+  },
+  "schranke_takt": 0.1,
+  "geraet": true,
+  "zweck": "der Auftrag, an dem der Kurs-Agent am 05.10.2026 scheiterte; er bleibt der Pruefstein"
+ },
+ {
+  "kennung": "zwei-leds",
+  "titel": "Zwei LEDs, zwei Takte",
+  "text": "Schreibe ein MicroPython-Programm fuer einen ESP32, bei dem die LED an GPIO 2 zweimal je Sekunde blinkt und gleichzeitig die LED an GPIO 4 einmal je Sekunde. Beide muessen wirklich nebeneinander laufen, nicht nacheinander. Baue eine Messroutine ein: Gib jede Sekunde die Zeile 'LAUF zwei-leds 2.0 und 1.0 Hz n=<Nummer> t=<Millisekunden seit Start> f2=<gezaehlte Flanken an GPIO 2> f4=<gezaehlte Flanken an GPIO 4>' aus. Zaehle die Flanken wirklich mit, behaupte sie nicht. Gib nur den Programmtext zurueck.",
+  "datei": "zwei.py",
+  "lebenszeile": "LAUF zwei-leds 2.0 und 1.0 Hz",
+  "erwartung": {
+   "pins": [
+    2,
+    4
+   ],
+   "takt_hz": 1.0,
+   "flanken": {
+    "f2": 4.0,
+    "f4": 2.0
+   }
+  },
+  "schranke_takt": 0.1,
+  "geraet": true,
+  "zweck": "zwei Takte in einer Schleife; hier scheitern kleine Modelle regelmaessig"
+ },
+ {
+  "kennung": "anschluesse",
+  "titel": "Was ist angeschlossen?",
+  "text": "Sieh nach, welche seriellen Anschluesse es an diesem Rechner gibt, und sage, welcher nach einem ESP32 aussieht.",
+  "datei": null,
+  "lebenszeile": null,
+  "erwartung": {
+   "werkzeug": "anschluesse"
+  },
+  "geraet": false,
+  "zweck": "kurzer Lauf ohne Programm; prueft Glied 2 und die Brueckenstrecke allein"
+ }
+]
