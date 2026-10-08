@@ -46,7 +46,7 @@ if os.name == 'nt':                      # Pro-Monitor-DPI: Fensterlagen, Mauspu
         try: ctypes.windll.user32.SetProcessDPIAware()
         except Exception: pass
 
-VERSION = ('Brücke 3.8 (07.10.2026, modell frage_datei dazu: lange Gespraeche kommen als Datei statt in der Befehlszeile. | aus 3.7 (07.10.2026, modell dazu: das Sprachmodell aus dem Kurspaket starten, befragen und beenden (llama-server auf 127.0.0.1:8099, nur von hier aus erreichbar) -- damit ein Agent im Arbeitsbereich das Modell auf DIESEM Rechner beauftragen kann, ohne Konto und ohne Netz. Enger Rahmen wie bei flashen: genau ein Programm aus C:\\Kurs_Agent\\paket, Modellwahl ueber Schluesselwort, Befehlszeile hier gebaut. | aus 3.6 (07.10.2026, mpy dazu: eine einzelne Python-Datei auf ein MicroPython-Brett schreiben und die Pruefsumme VOM BRETT zurueckholen, dazu liste, pruefsumme und reset. Weg ist die Raw-REPL ueber pyserial; auf dem Rechner wird nichts gestartet. Anlass: ohne diesen Schritt endet die Kette Modell-Programm-Geraet am Rechner, und ob auf dem Brett etwas laeuft, weiss nur wer danebensteht. | aus 3.5 (04.10.2026, sende dazu: eine kurze JSON-Nachricht an ein Programm auf dem Rechner selbst (nur 127.x), damit der laufende Kurs-Agent aus dem Arbeitsbereich bedient werden kann -- auf Wort des Auftraggebers. | aus 3.4 (04.10.2026, hole nimmt auch 127.0.0.1 an -- die Auskunft eines Programms auf dem Arbeitsplatzrechner selbst, etwa der Kurs-Agent unter 127.0.0.1:8777/zustand, lesbar ohne den Browser-Reiter nach vorn zu holen; nur lesen, nur HTTP, wie bisher. | aus 3.3 (03.10.2026, hole nimmt auch Namen der Form <name>.local an -- der Heizoelanzeiger meldet sich als heizoel.local an, damit er auch dann erreichbar bleibt, wenn der Router eine andere Zahl vergibt. Keine Ausweitung ins Internet: .local wird nur auf dem eigenen Netzstrang aufgeloest.) | aus 3.2 (02.10.2026, ota dazu: Firmware ueber WLAN statt Kabel, espota.py aus dem Brueckenordner, gleicher enger Rahmen wie flashen. | aus 3.1: flashen und seriell dazu: ein ESP32-Brett laesst sich jetzt aus dem Workspace neu beschreiben und mitlesen, ohne eine zweite Bruecke daneben. Eng gefasst - nur esptool, nur eine .bin aus dem Brueckenordner, nur COM<Zahl>, nur 0x0 oder 0x10000; die Befehlszeile wird hier gebaut. Anlass: die CYD-Bruecke lag nicht mehr auf dem Rechner, und zwei Bruecken nebeneinander waren schon einmal die Fehlerquelle.) | aus Brücke 3.0 (01.10.2026, Universalbrücke: ein Programm für alle Projekte statt dreier nebeneinander. Fragt in jedem Durchlauf alle Projekte aus PROJEKTE ab und antwortet jeweils demselben; Dateien landen im Ordner des Projekts, aus dem der Befehl kam. Ordner C:\\Bruecke, Startdatei Bruecke_starten.bat, Selbstaktualisierung holt bruecke.py. Erlaubte Zweige um C:\\Bruecke, C:\\Antigravitation und C:\\Kurs_Agent erweitert; Projekt Kurs_Agent aufgenommen.'
+VERSION = ('Brücke 3.13 (08.10.2026, kursagent und modell starten abgeloest -- bisher starben sie mit der Bruecke, wenn die sich selbst aktualisierte, und eine laufende Pruefreihe lieferte stumm nichts. | aus 3.12 (08.10.2026, femm weist alles ab, was nicht auf .lua endet -- eine .py liess FEMM offen stehen und blockierte die Bruecke die volle Zeitgrenze. | aus 3.11 (08.10.2026, python dazu: ein Pruefprogramm aus C:\\Kurs_Agent oder C:\\Bruecke starten und seine Ausgabe zurueckgeben -- damit Pruefungen auf diesem Rechner nicht abgetippt werden muessen. | aus 3.10 (07.10.2026, jede Auskunft nennt den Rechnernamen -- sonst laesst sich bei zwei Bruecken nicht unterscheiden, welche geantwortet hat. | aus 3.9 (07.10.2026, kursagent dazu: das Kurspaket auf diesem Rechner starten und nach seinem Zustand fragen -- damit es SELBST arbeitet und vom Arbeitsbereich aus nur geprueft und ergaenzt wird. | aus 3.8 (07.10.2026, modell frage_datei dazu: lange Gespraeche kommen als Datei statt in der Befehlszeile. | aus 3.7 (07.10.2026, modell dazu: das Sprachmodell aus dem Kurspaket starten, befragen und beenden (llama-server auf 127.0.0.1:8099, nur von hier aus erreichbar) -- damit ein Agent im Arbeitsbereich das Modell auf DIESEM Rechner beauftragen kann, ohne Konto und ohne Netz. Enger Rahmen wie bei flashen: genau ein Programm aus C:\\Kurs_Agent\\paket, Modellwahl ueber Schluesselwort, Befehlszeile hier gebaut. | aus 3.6 (07.10.2026, mpy dazu: eine einzelne Python-Datei auf ein MicroPython-Brett schreiben und die Pruefsumme VOM BRETT zurueckholen, dazu liste, pruefsumme und reset. Weg ist die Raw-REPL ueber pyserial; auf dem Rechner wird nichts gestartet. Anlass: ohne diesen Schritt endet die Kette Modell-Programm-Geraet am Rechner, und ob auf dem Brett etwas laeuft, weiss nur wer danebensteht. | aus 3.5 (04.10.2026, sende dazu: eine kurze JSON-Nachricht an ein Programm auf dem Rechner selbst (nur 127.x), damit der laufende Kurs-Agent aus dem Arbeitsbereich bedient werden kann -- auf Wort des Auftraggebers. | aus 3.4 (04.10.2026, hole nimmt auch 127.0.0.1 an -- die Auskunft eines Programms auf dem Arbeitsplatzrechner selbst, etwa der Kurs-Agent unter 127.0.0.1:8777/zustand, lesbar ohne den Browser-Reiter nach vorn zu holen; nur lesen, nur HTTP, wie bisher. | aus 3.3 (03.10.2026, hole nimmt auch Namen der Form <name>.local an -- der Heizoelanzeiger meldet sich als heizoel.local an, damit er auch dann erreichbar bleibt, wenn der Router eine andere Zahl vergibt. Keine Ausweitung ins Internet: .local wird nur auf dem eigenen Netzstrang aufgeloest.) | aus 3.2 (02.10.2026, ota dazu: Firmware ueber WLAN statt Kabel, espota.py aus dem Brueckenordner, gleicher enger Rahmen wie flashen. | aus 3.1: flashen und seriell dazu: ein ESP32-Brett laesst sich jetzt aus dem Workspace neu beschreiben und mitlesen, ohne eine zweite Bruecke daneben. Eng gefasst - nur esptool, nur eine .bin aus dem Brueckenordner, nur COM<Zahl>, nur 0x0 oder 0x10000; die Befehlszeile wird hier gebaut. Anlass: die CYD-Bruecke lag nicht mehr auf dem Rechner, und zwei Bruecken nebeneinander waren schon einmal die Fehlerquelle.) | aus Brücke 3.0 (01.10.2026, Universalbrücke: ein Programm für alle Projekte statt dreier nebeneinander. Fragt in jedem Durchlauf alle Projekte aus PROJEKTE ab und antwortet jeweils demselben; Dateien landen im Ordner des Projekts, aus dem der Befehl kam. Ordner C:\\Bruecke, Startdatei Bruecke_starten.bat, Selbstaktualisierung holt bruecke.py. Erlaubte Zweige um C:\\Bruecke, C:\\Antigravitation und C:\\Kurs_Agent erweitert; Projekt Kurs_Agent aufgenommen.'
            ' | aus CAD-Brücke 2.5 (30.09.2026): Ordner C:\\Leiterplatten, Hochladen mit Dateimuster, Befehl oeffnen; 2.5 davor: Gehalt-Ordner, Kennlinienschreiber, Verschieben in Projektordnern; 2026-09-29: Verschieben nach alt; 2026-09-26: Löschen benannter Dateien, Sicherungskopie nur bei echter Änderung, Update mit Zielordner, MegaCAD per DDE, Mausklick, Dateiliste, Hochladen, Bildschirmfoto, DPI-bewusst, Monitorliste, FEMM-Lauf, Selbstupdate)')
 # ---------------------------------------------------------------- Zugang
 # Adresse und Token stehen NICHT im Programm, sondern in bruecke_zugang.json daneben.
@@ -1120,8 +1120,14 @@ def modell(spec):
             return f'FEHLER: llama-server.exe liegt nicht unter {_MODELL_ORDNER}'
         befehl = [exe, '-m', gguf, '--host', '127.0.0.1', '--port', str(_MODELL_PORT),
                   '-c', '16384', '-ngl', '99', '--jinja', '--no-webui']
+        zusatz = {}
+        if os.name == 'nt':
+            zusatz['creationflags'] = (getattr(subprocess, 'DETACHED_PROCESS', 0x00000008)
+                                       | getattr(subprocess, 'CREATE_NEW_PROCESS_GROUP', 0x00000200))
+        else:
+            zusatz['start_new_session'] = True
         subprocess.Popen(befehl, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-                         cwd=os.path.dirname(exe))
+                         cwd=os.path.dirname(exe), **zusatz)
         t0 = time.time()
         while time.time() - t0 < 300:                       # ein 7B-Modell braucht zum Laden Minuten
             time.sleep(3)
@@ -1168,6 +1174,129 @@ def modell(spec):
     return f'FEHLER: "{was}" kenne ich nicht (start, status, frage, frage_datei, stop)'
 
 
+# Wo ein Python-Programm liegen darf, das diese Bruecke startet. Absichtlich enger als
+# ERLAUBT_VERSCHIEBEN: Dateien schieben ist harmlos, Programme starten ist es nicht.
+ERLAUBT_PYTHON = (r'C:\Kurs_Agent', r'C:\Bruecke')
+
+
+def python_lauf(spec):
+    """'python <datei.py> [Argumente]': ein Python-Programm aus einem erlaubten Zweig starten.
+
+    Warum es diesen Befehl gibt
+    ---------------------------
+    Prueffungen, die auf DIESEM Rechner laufen sollen, muessen von hier aus auch gestartet
+    werden koennen -- sonst muss ein Mensch sie abtippen und die Ausgabe zurueckmelden. Die
+    kleine Bruecke auf dem zweiten Rechner konnte das seit dem 08.10.2026; diese hier zog nach
+    (Grundsatz 27: erprobte Faehigkeiten gehoeren in die eine Bruecke, nicht in Projektinseln).
+
+    Der enge Rahmen, wie bei flashen, femm und modell
+    ------------------------------------------------
+      * Die Datei liegt in einem der erlaubten Zweige (C:\\Bruecke, C:\\Kurs_Agent, ...) und
+        endet auf .py. Ein Pfad ausserhalb wird abgewiesen.
+      * Argumente nur aus engem Zeichenvorrat; die Befehlszeile wird hier gebaut.
+      * Genommen wird das Python des Kurspakets, falls die Datei darunter liegt, sonst dieses.
+      * Hoechstens 20 Minuten, hoechstens 60 kB Ausgabe.
+
+    Das ist die eine Stelle, an der diese Bruecke beliebigen Python-Code startet. Sie ist eng
+    gefasst, aber sie ist weiter als alles andere hier -- wer sie aendert, aendert die Grenze.
+    """
+    teile = (spec or '').split()
+    if not teile:
+        return 'FEHLER: Aufruf python <datei.py> [Argumente]'
+    pfad = teile[0]
+    if not pfad.lower().endswith('.py'):
+        return f'FEHLER: "{pfad}" endet nicht auf .py'
+    if not os.path.isabs(pfad):
+        pfad = os.path.join(ORDNER, pfad)
+    pfad = os.path.abspath(pfad)
+    if not any(pfad.lower().startswith(z.lower()) for z in ERLAUBT_PYTHON):
+        return (f'FEHLER: {pfad} liegt ausserhalb der erlaubten Zweige. '
+                f'Erlaubt: {", ".join(ERLAUBT_PYTHON)}')
+    if not os.path.isfile(pfad):
+        return f'FEHLER: {pfad} gibt es nicht'
+    argumente = teile[1:]
+    for a in argumente:
+        if not re.fullmatch(r'[A-Za-z0-9._=/\\:{}"-]{1,160}', a):
+            return f'FEHLER: Argument {a!r} enthaelt Zeichen, die hier nicht durchgehen'
+    kurs = r'C:\Kurs_Agent\ablage\python\python.exe'
+    py = kurs if (pfad.lower().startswith(r'c:\kurs_agent') and os.path.isfile(kurs)) else sys.executable
+    try:
+        r = subprocess.run([py, pfad] + argumente, capture_output=True, text=True,
+                           timeout=1200, cwd=os.path.dirname(pfad))
+    except subprocess.TimeoutExpired:
+        return f'FEHLER: {os.path.basename(pfad)} lief laenger als 20 Minuten und wurde beendet'
+    aus = ((r.stdout or '') + (r.stderr or ''))[:60000]
+    return f'{os.path.basename(pfad)} mit {os.path.basename(py)}, Rueckgabe {r.returncode}:\n{aus}'
+
+
+def kursagent(spec):
+    """'kursagent start|status|stop': das Kurspaket auf DIESEM Rechner laufen lassen.
+
+    Warum das hier steht
+    --------------------
+    In C:\\Kurs_Agent liegt ein vollstaendiges System: eigenes Python, eigenes Sprachmodell,
+    eigene Werkzeuge, eigene Treiber. Es soll **selbst** arbeiten. Vom Arbeitsbereich aus wird
+    es dafuer nur gestartet, befragt und -- wenn etwas fehlt -- mit neuen Dateien versorgt
+    (ueber update). Wer die Aufgabe statt dessen im Arbeitsbereich loest, hat das System nicht
+    geprueft, sondern umgangen.
+
+    Der enge Rahmen, wie bei flashen, femm und modell
+    ------------------------------------------------
+      * Gestartet wird genau ein Programm: das Python des Kurspakets mit agent\\oberflaeche.py.
+      * Beide Pfade stehen hier fest. Vom Aufrufer kommt nichts hinein.
+      * Der Agent hoert nur auf 127.0.0.1:8777. Nichts davon verlaesst den Rechner.
+      * Befragen und beauftragen laeuft ueber 'hole' und 'sende', nicht ueber diesen Befehl.
+    """
+    wurzel = r'C:\Kurs_Agent'
+    py = os.path.join(wurzel, 'paket', 'python_vorlage', 'python.exe')
+    skript = os.path.join(wurzel, 'agent', 'oberflaeche.py')
+
+    def laeuft():
+        try:
+            with urllib.request.urlopen('http://127.0.0.1:8777/zustand', timeout=3) as r:
+                return r.read(400).decode('utf-8', 'replace')
+        except Exception:
+            return None
+
+    was = (spec or 'status').strip().lower()
+    if was == 'status':
+        z = laeuft()
+        return (f'Der Kurs-Agent laeuft auf 127.0.0.1:8777: {z.strip()[:200]}' if z
+                else 'Der Kurs-Agent antwortet nicht auf 127.0.0.1:8777. Mit "kursagent start" starten.')
+
+    if was == 'stop':
+        r = subprocess.run(['taskkill', '/F', '/IM', 'python.exe'], capture_output=True, text=True, timeout=30)
+        return ('Python-Prozesse beendet (darunter der Kurs-Agent).' if r.returncode == 0
+                else 'Kein laufender Kurs-Agent gefunden: ' + (r.stdout or r.stderr).strip()[:150])
+
+    if was == 'start':
+        if laeuft():
+            return 'Der Kurs-Agent laeuft schon auf 127.0.0.1:8777.'
+        for p in (py, skript):
+            if not os.path.isfile(p):
+                return f'FEHLER: {p} gibt es nicht.'
+        #  Abgeloest starten. Sonst ist der Agent ein Kindprozess DIESER Bruecke und stirbt
+        #  mit ihr -- am 08.10.2026 beendete eine Selbstaktualisierung der Bruecke den laufenden
+        #  Agenten mitten in einer Pruefreihe, und die Laeufe lieferten stumm nichts.
+        zusatz = {}
+        if os.name == 'nt':
+            zusatz['creationflags'] = (getattr(subprocess, 'DETACHED_PROCESS', 0x00000008)
+                                       | getattr(subprocess, 'CREATE_NEW_PROCESS_GROUP', 0x00000200))
+        else:
+            zusatz['start_new_session'] = True
+        subprocess.Popen([py, skript], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                         cwd=wurzel, **zusatz)
+        t0 = time.time()
+        while time.time() - t0 < 420:            # mit dem Laden des Modells kann es dauern
+            time.sleep(4)
+            z = laeuft()
+            if z:
+                return f'Kurs-Agent gestartet nach {time.time()-t0:.0f} s: {z.strip()[:200]}'
+        return 'FEHLER: der Kurs-Agent war nach 420 s noch nicht ansprechbar.'
+
+    return f'FEHLER: "{was}" kenne ich nicht (start, status, stop)'
+
+
 def _json_laden(roh):
     import json as _j
     return _j.loads(roh.decode('utf-8') if isinstance(roh, bytes) else roh)
@@ -1189,6 +1318,13 @@ def femm(spec):
     if not teile:
         return 'FEHLER: Aufruf femm <Lua-Datei> [Sekunden]'
     name = teile[0]
+    #  Nur Lua. Am 08.10.2026 wurde diesem Befehl eine .py-Datei gegeben: FEMM startete, fand
+    #  nichts abzuarbeiten, blieb offen stehen, und die Bruecke wartete die volle Zeitgrenze --
+    #  bis dahin nahm sie keinen anderen Auftrag an. Ein Werkzeug, das die falsche Dateiart
+    #  annimmt, blockiert den ganzen Weg; also sagt es das lieber sofort.
+    if not name.lower().endswith('.lua'):
+        return (f'FEHLER: "{name}" ist keine Lua-Datei. Dieser Befehl startet FEMM mit einem '
+                f'Lua-Skript. Ein Python-Programm startet "python <datei.py>".')
     grenze = int(teile[1]) if len(teile) > 1 and teile[1].isdigit() else 7200
     skript = name if os.path.isabs(name) else os.path.join(ORDNER, name)
     if not os.path.isfile(skript):
@@ -1282,9 +1418,22 @@ def monitore():
         l, t, r, b = win32gui.GetWindowRect(h); zeilen.append(f'MegaCAD-Fenster: {r - l}x{b - t} bei ({l},{t}) – „{win32gui.GetWindowText(h)[:60]}“')
     else: zeilen.append('MegaCAD-Fenster: nicht sichtbar')
     return '\n'.join(zeilen)
+def rechnername():
+    """Auf welchem Rechner laeuft diese Bruecke?
+
+    Seit 07.10.2026 steht das in jeder Auskunft und in jeder Antwort auf einen unbekannten
+    Befehl. Anlass: Der Auftraggeber arbeitete von einem zweiten Rechner aus und fragte, ob
+    sich unterscheiden laesst, welcher gerade antwortet. Es liess sich nicht -- die Bruecke
+    nannte nur ihre Fassung. Zwei Bruecken ohne Namen sind eine Fehlerquelle, die man erst
+    bemerkt, wenn eine Datei auf dem falschen Rechner landet.
+    """
+    import platform
+    return os.environ.get('COMPUTERNAME') or platform.node() or 'unbekannt'
+
+
 def info():
     import importlib.util as ilu
-    return f'{VERSION} | Python {sys.version.split()[0]} {sys.executable} | Ordner {ORDNER} | pywin32: {"ja" if ilu.find_spec("win32ui") else "FEHLT"} | Pillow: {"ja" if ilu.find_spec("PIL") else "fehlt"} | {megacad("?")}'
+    return f'Rechner {rechnername()} | {VERSION} | Python {sys.version.split()[0]} {sys.executable} | Ordner {ORDNER} | pywin32: {"ja" if ilu.find_spec("win32ui") else "FEHLT"} | Pillow: {"ja" if ilu.find_spec("PIL") else "fehlt"} | {megacad("?")}'
 def startdatei_schreiben():
     if os.name != 'nt': return
     bat = os.path.join(ORDNER, 'Bruecke_starten.bat')
@@ -1337,6 +1486,8 @@ def _ausfuehren(liste):
             elif typ == 'seriell': text = seriell(arg)
             elif typ == 'mpy': text = mpy(arg)
             elif typ == 'modell': text = modell(arg)
+            elif typ == 'kursagent': text = kursagent(arg)
+            elif typ == 'python': text = python_lauf(arg)
             elif typ == 'femm': text = femm(arg)
             elif typ == 'fenster': text = fenster(arg)
             elif typ == 'zeigen': text = zeigen(arg)
@@ -1347,7 +1498,7 @@ def _ausfuehren(liste):
             elif typ == 'megacad_nach': text = megacad_nach(arg)
             elif typ == 'info': text = info()
             elif typ == 'selbstupdate': text = selbstupdate()
-            else: text = f'unbekannter Befehlstyp {typ} (Brücke kennt: megacad, dateiliste, hochladen, update, loeschen, verschieben, oeffnen, bildschirm, anschluesse, flashen, ota, seriell, mpy, modell, femm, hole, sende, info, selbstupdate)'
+            else: text = f'unbekannter Befehlstyp {typ} auf Rechner {rechnername()} (Brücke kennt: megacad, dateiliste, hochladen, update, loeschen, verschieben, oeffnen, bildschirm, anschluesse, flashen, ota, seriell, mpy, modell, kursagent, python, femm, hole, sende, info, selbstupdate)'
         except Exception as e: text = f'FEHLER: {e}'
         try:
             req = urllib.request.Request(f'{WORKSPACE}/antwort?' + q(id=b['id']), data=text.encode('utf-8'), method='POST'); urllib.request.urlopen(req, timeout=30).read()
@@ -1364,7 +1515,7 @@ if __name__ != '__main__':                                                      
 
 if __name__ == '__main__':
     p = argparse.ArgumentParser(); p.add_argument('--alle', type=float, default=2.0); a = p.parse_args()
-    print(VERSION); print('Ordner:', ORDNER)
+    print(VERSION); print('Rechner:', rechnername(), '| Ordner:', ORDNER)
     print('Projekte:', ', '.join(PROJEKTE))
     print('Python:', sys.version.split()[0], sys.executable)
     try:
